@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FB52FFC425709C860074ECAA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB52FFC325709C860074ECAA /* main.cpp */; };
+		FB52FFCD2570A0AD0074ECAA /* libcurl.4.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FB52FFCC2570A0AD0074ECAA /* libcurl.4.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		FB52FFC025709C860074ECAA /* USTBLogin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = USTBLogin; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB52FFC325709C860074ECAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		FB52FFCC2570A0AD0074ECAA /* libcurl.4.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.4.tbd; path = usr/lib/libcurl.4.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB52FFCD2570A0AD0074ECAA /* libcurl.4.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +46,7 @@
 			children = (
 				FB52FFC225709C860074ECAA /* USTBLogin */,
 				FB52FFC125709C860074ECAA /* Products */,
+				FB52FFCB2570A0AD0074ECAA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +64,14 @@
 				FB52FFC325709C860074ECAA /* main.cpp */,
 			);
 			path = USTBLogin;
+			sourceTree = "<group>";
+		};
+		FB52FFCB2570A0AD0074ECAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB52FFCC2570A0AD0074ECAA /* libcurl.4.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
