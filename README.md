@@ -1,5 +1,5 @@
 # USTBLogin
-USTB-WiFi Command-line Login Tool
-usage: ustbLogin [-option]
-   -l [username] [password]: Login
+USTB-WiFi Command-line Login Tool<br>
+**usage:** ustbLogin [-option] <br>
+   -l [username] [password]: Login<br>
    -o: Log out
