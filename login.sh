@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-my_ip=$(wget -qO - http://cippv6.ustb.edu.cn/get_ip.php | sed "s/^gIpV6Addr = '//g" | sed "s/';//g" | sed "s/\r//g" | sed "s/\n//g")
+my_ip=$(wget -6 -qO - 'http://[2001:da8:208:100::115]:80/get_ip.php' | sed "s/^gIpV6Addr = '//g" | sed "s/';//g" | sed "s/\r//g" | sed "s/\n//g")
 
 printf "Your IPv6 Address: %s\n" "${my_ip}"
 sid=""
