@@ -4,15 +4,18 @@ my_ip=$(wget -qO - 'http://cippv6.ustb.edu.cn/get_ip.php' | sed "s/^gIpV6Addr = 
 # 某些代理运行时候可能会导致以上的方法失效，可以尝试使用下面的方法
 # ips=$(/sbin/ip -6 addr | grep inet6 | awk -F '[ \t]+|/' '{print $3}' | grep -v ^::1 | grep -v ^fe80 | grep -v ^dd00:)
 
-sid="xxx" # 你的上网账号
-pwd="xxx" # 你的上网账号的密码
+SID="xxx" # 你的上网账号
+PWD="xxx" # 你的上网账号的密码
+
+V6_TESTIP="2001:da8:d800:95::110" # 用于测试ipv6连通性的IP，此处为USTC的IP
+DDNS_FILE="/etc/ipv6_ddns.sh"     # DDNS脚本的路径，留空则不启用DDNS
 
 public_ip=""
 
 login() {
   printf "Your IPv6 Address: %s\n" "${my_ip}"
   public_ip=$my_ip
-  curl -L --data-urlencode "callback=dr1004" --data-urlencode "DDDDD=${sid}" --data-urlencode "upass=${pwd}" --data-urlencode "0MKKey=123456" --data-urlencode "R1=0R2" --data-urlencode "R3=0" --data-urlencode "R6=0" --data-urlencode "para=00" --data-urlencode "v6ip=${my_ip}" --data-urlencode "terminal_type=1" --data-urlencode "lang=zh-cn" --data-urlencode "jsVersion=4.1" --data-urlencode "v=9517" --data-urlencode "lang=zh" http://202.204.48.66/drcom/login >&/dev/null
+  curl -L --data-urlencode "callback=dr1004" --data-urlencode "DDDDD=${SID}" --data-urlencode "upass=${PWD}" --data-urlencode "0MKKey=123456" --data-urlencode "R1=0R2" --data-urlencode "R3=0" --data-urlencode "R6=0" --data-urlencode "para=00" --data-urlencode "v6ip=${my_ip}" --data-urlencode "terminal_type=1" --data-urlencode "lang=zh-cn" --data-urlencode "jsVersion=4.1" --data-urlencode "v=9517" --data-urlencode "lang=zh" http://202.204.48.66/drcom/login >&/dev/null
 }
 
 logout() {
@@ -20,8 +23,8 @@ logout() {
 }
 
 trylog() {
-  if ping -W 1 -c 2 2403:18c0:1000:74:: &>/dev/null; then
-    if [ "$public_ip" != "" ]; then
+  if ping -W 1 -c 2 $V6_TESTIP &>/dev/null; then
+    if [[ "$public_ip" != "" ]] && [[ -e $DDNS_FILE ]]; then
       echo "IP changed, executing ddns script..."
       /etc/ipv6_ddns.sh $public_ip
     fi
